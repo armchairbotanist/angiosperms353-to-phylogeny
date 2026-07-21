@@ -1,11 +1,12 @@
 # Part 1: Environment Setup and Data Retrieval
 
-This tutorial series will show how to turn Angiosperms353 sequencing reads into a preliminary phylogeny. It is divided into four parts:
+This tutorial series will show how to turn Angiosperms353 sequencing reads into a preliminary phylogeny. It is divided into five parts:
 
 1. **Environment setup and data retrieval** — this document
-2. Read cleaning and Angiosperms353 locus recovery with HybPiper
-3. Locus alignment, filtering, and concatenation
-4. Phylogenetic tree construction and interpretation
+2. Read cleaning and tutorial target preparation
+3. Angiosperms353 locus recovery with HybPiper
+4. Locus alignment, filtering, and concatenation
+5. Phylogenetic tree construction and interpretation
 
 We will first work with a small example containing four plant samples. The data were generated using the Angiosperms353 probe set and come from the [Captus example-data tutorial](https://edgardomortiz.github.io/captus.docs/tutorials/assembly/basic/index.html). We are using only its example reads—not the Captus software.
 
@@ -156,7 +157,7 @@ This installs:
 
 - HybPiper and its required assembly/recovery programs;
 - `fastp`, which Part 2 will use to clean the FASTQ reads; and
-- IQ-TREE, which Part 4 will use to estimate a phylogeny.
+- IQ-TREE, which Part 5 will use to estimate a phylogeny.
 
 Activate the environment:
 
@@ -258,7 +259,7 @@ curl -L \
 
 The long identifier in the URL is a Git commit. Using it instead of `master` ensures that the tutorial continues to retrieve the same target-file version if the repository changes later.
 
-This is a nucleotide target file. In Part 2, HybPiper will therefore receive it through the nucleotide-target option and will use BWA for read mapping.
+This is a nucleotide target file. In Part 3, HybPiper will therefore receive it through the nucleotide-target option and will use BWA for read mapping.
 
 ## 8. Confirm and protect the downloaded inputs
 
@@ -314,4 +315,4 @@ phylogeny/
 
 The `angiosperms353` Conda environment contains HybPiper, fastp, and IQ-TREE. The extracted example reads and target FASTA are preserved separately and have not been processed.
 
-Part 2 will clean the FASTQ files into a separate working directory with fastp, then use HybPiper to recover the 353 target loci from each sample.
+Part 2 will clean the FASTQ files with fastp and create a smaller target for the tutorial. Part 3 will use HybPiper to recover target loci from each sample.
