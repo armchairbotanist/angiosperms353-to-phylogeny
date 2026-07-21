@@ -1,0 +1,9 @@
+# Downloaded biological data and generated analysis files
+raw_data/
+references/
+work/
+results/
+
+# Download archives and macOS metadata
+*.tar.gz
+.DS_Store
