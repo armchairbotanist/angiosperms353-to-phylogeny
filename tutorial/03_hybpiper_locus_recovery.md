@@ -1,10 +1,16 @@
 # Part 3: Angiosperms353 Locus Recovery with HybPiper
 
-Part 2 produced:
+## Inputs
 
-- eight cleaned FASTQ files;
-- a list containing the four sample names; and
-- a 10-gene tutorial target FASTA.
+- Eight cleaned FASTQ files in `work/clean_reads/`.
+- `work/sample_names.txt`.
+- `references/angiosperms353/Angiosperms353_first_10_genes.fasta`.
+
+## Outputs
+
+- One HybPiper result directory per sample in `work/hybpiper/`.
+- The recovery-summary tables `hybpiper_stats.tsv`, `seq_lengths.tsv`, and `gene_read_counts_all.tsv`.
+- One unaligned multi-sample `.FNA` file per recovered gene in `work/recovered_genes/`.
 
 Part 3 will:
 
@@ -45,7 +51,7 @@ HybPiper processes each sample independently. Its main `assemble` command perfor
 
 For a more detailed explanation, read [Understanding `hybpiper assemble`](03a_hybpiper_assemble_lesson.md).
 
-The output prefix becomes both the sample label in recovered FASTA files and the name of that sample's HybPiper directory.
+The output prefix names the sample's HybPiper directory and appears at the beginning of its recovered FASTA headers. HybPiper may add a short annotation after the sample name; Part 4 removes that annotation before concatenation.
 
 This tutorial recovers coding sequences only. It skips intron and supercontig recovery and uses the 10-gene target created in Part 2.
 
@@ -200,4 +206,4 @@ phylogeny/
     └── 03b_reading_a_hybpiper_summary_table.md
 ```
 
-Part 4 will align the sequences within each locus, inspect and filter the alignments, then concatenate the retained loci into a phylogenetic data matrix.
+Part 4 will align the sequences within each locus, inspect the alignments, and concatenate them into a phylogenetic data matrix.

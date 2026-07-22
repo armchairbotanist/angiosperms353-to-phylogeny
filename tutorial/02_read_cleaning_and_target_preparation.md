@@ -1,9 +1,16 @@
 # Part 2: Read Cleaning and Tutorial Target Preparation
 
-Part 1 prepared the `angiosperms353` Conda environment and downloaded:
+## Inputs
 
-- four pairs of raw Angiosperms353 FASTQ files; and
-- the Angiosperms353 nucleotide target FASTA.
+- Four raw FASTQ pairs in `raw_data/angiosperms353_example/`.
+- `references/angiosperms353/Angiosperms353_targetSequences.fasta`.
+
+## Outputs
+
+- `work/sample_names.txt`.
+- Eight cleaned FASTQ files in `work/clean_reads/`.
+- Four HTML and four JSON reports in `work/fastp_reports/`.
+- `references/angiosperms353/Angiosperms353_first_10_genes.fasta`.
 
 Part 2 will:
 

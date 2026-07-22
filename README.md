@@ -10,5 +10,5 @@ A minimal, step-by-step tutorial for turning Angiosperms353 sequencing reads int
 3. [Part 3: Angiosperms353 Locus Recovery with HybPiper](tutorial/03_hybpiper_locus_recovery.md)
    - [Understanding `hybpiper assemble`](tutorial/03a_hybpiper_assemble_lesson.md)
    - [Reading a HybPiper Summary Table](tutorial/03b_reading_a_hybpiper_summary_table.md)
-
-Parts 4 and 5 will cover sequence alignment and phylogenetic tree construction.
+4. [Part 4: Locus Alignment and Concatenation](tutorial/04_locus_alignment_and_concatenation.md)
+5. [Part 5: Phylogenetic Tree Construction and Interpretation](tutorial/05_phylogenetic_tree_construction.md)

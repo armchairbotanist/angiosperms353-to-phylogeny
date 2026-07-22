@@ -1,16 +1,27 @@
 # Part 1: Environment Setup and Data Retrieval
 
+## Inputs
+
+- A Mac with internet access and Terminal.
+- No sequencing files are required beforehand; this part downloads the tutorial data.
+
+## Outputs
+
+- The `angiosperms353` Conda environment containing the tutorial software.
+- Eight raw FASTQ files in `raw_data/angiosperms353_example/`.
+- The complete Angiosperms353 target FASTA in `references/angiosperms353/`.
+
 This tutorial series will show how to turn Angiosperms353 sequencing reads into a preliminary phylogeny. It is divided into five parts:
 
 1. **Environment setup and data retrieval** — this document
 2. Read cleaning and tutorial target preparation
 3. Angiosperms353 locus recovery with HybPiper
-4. Locus alignment, filtering, and concatenation
+4. Locus alignment, inspection, and concatenation
 5. Phylogenetic tree construction and interpretation
 
 We will first work with a small example containing four plant samples. The data were generated using the Angiosperms353 probe set and come from the [Captus example-data tutorial](https://edgardomortiz.github.io/captus.docs/tutorials/assembly/basic/index.html). We are using only its example reads—not the Captus software.
 
-Our main program will be [HybPiper](https://github.com/mossmatters/HybPiper). HybPiper recovers targeted genes from high-throughput sequencing reads. Later parts will use MAFFT to align the recovered genes and IQ-TREE to infer a phylogeny.
+Our main program will be [HybPiper](https://github.com/mossmatters/HybPiper). HybPiper recovers targeted genes from high-throughput sequencing reads. Later parts will use MAFFT to align the recovered genes, AMAS to concatenate them, and IQ-TREE to infer a phylogeny.
 
 Part 1 does not process reads or construct a tree. It prepares the software and downloads the two required inputs:
 
@@ -148,7 +159,7 @@ Create an Intel-compatible environment named `angiosperms353`:
 ```bash
 CONDA_SUBDIR=osx-64 conda create -n angiosperms353 \
   -c conda-forge -c bioconda \
-  hybpiper=2.3.4 fastp iqtree
+  hybpiper=2.3.4 fastp amas=1.0 iqtree
 ```
 
 Enter `y` when Conda asks for confirmation.
@@ -156,7 +167,8 @@ Enter `y` when Conda asks for confirmation.
 This installs:
 
 - HybPiper and its required assembly/recovery programs;
-- `fastp`, which Part 2 will use to clean the FASTQ reads; and
+- `fastp`, which Part 2 will use to clean the FASTQ reads;
+- AMAS, which Part 4 will use to summarize and concatenate alignments; and
 - IQ-TREE, which Part 5 will use to estimate a phylogeny.
 
 Activate the environment:
@@ -183,10 +195,12 @@ Check that HybPiper can find its supporting programs:
 hybpiper check_dependencies
 ```
 
-Also confirm the read-cleaning and tree programs:
+Also confirm the remaining programs:
 
 ```bash
 fastp --version
+mafft --version
+AMAS.py --help
 iqtree -version
 ```
 
